@@ -1,6 +1,8 @@
 package com.example.mytodo;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -29,12 +31,21 @@ public class TodoController {
 
     //   .../todo/id
     // GET
-    @GetMapping("/todo/id")
-    public Todo getTodos2(){
-        final long id  = 1;
+    @GetMapping("/todo/{id}")
+    public Todo getTodosById(@PathVariable long id){
         return  todos.stream().filter(result -> result.getId() == id)
                 .findFirst().orElseGet( ()-> null );
     }
+
+
+
+    //   .../todo/search?name = iblurblur
+    // GET
+    @GetMapping("/todo/search")
+    public String getTodosByName(@RequestParam(defaultValue = "cat") String name){
+        return  "search: " + name;
+    }
+
 
 
 }
