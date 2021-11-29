@@ -8,9 +8,10 @@ public class TodoController {
     public TodoController(){
 
     }
+    //   .../todo
     // GET
-    @GetMapping("/say")
-    public String say(){
+    @GetMapping("/todo")
+    public String getTodos(){
         return  "iBlurBlur";
     }
 
