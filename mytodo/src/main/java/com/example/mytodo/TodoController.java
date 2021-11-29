@@ -26,4 +26,15 @@ public class TodoController {
         return  todos;
     }
 
+
+    //   .../todo/id
+    // GET
+    @GetMapping("/todo/id")
+    public Todo getTodos2(){
+        final long id  = 1;
+        return  todos.stream().filter(result -> result.getId() == id)
+                .findFirst().orElseGet( ()-> null );
+    }
+
+
 }
