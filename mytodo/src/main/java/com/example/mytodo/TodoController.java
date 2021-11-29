@@ -1,18 +1,16 @@
 package com.example.mytodo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 @RestController // ทำให้ class นี้ return เป็น json ได้เอง
 public class TodoController {
 
     private List<Todo> todos = new ArrayList<>();
-
+    private final AtomicLong counter = new AtomicLong();
 
 
     public TodoController(){
@@ -39,11 +37,18 @@ public class TodoController {
 
 
 
-    //   .../todo/search?name = iblurblur
+    //   .../todo/search?name=iblurblur
     // GET
     @GetMapping("/todo/search")
     public String getTodosByName(@RequestParam(defaultValue = "cat") String name){
         return  "search: " + name;
+    }
+
+
+    // ..../todo
+    @PostMapping("/todo")
+    public void addTodo(@RequestBody Todo todo){
+        todos.add(new Todo(counter.getAndIncrement(), todo.getName()));
     }
 
 
