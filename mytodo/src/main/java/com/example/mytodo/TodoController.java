@@ -52,5 +52,36 @@ public class TodoController {
     }
 
 
+    //   .../todo/1234
+    // GET
+    @PutMapping("/todo/{id}")
+    public void editTodo(@RequestBody Todo todo, @PathVariable long id){
+        todos.stream().filter(result -> result.getId() == id)
+                .findFirst()
+//                .ifPresentOrElse()
+                .ifPresent(result -> {
+                    result.setName(todo.getName());
+//                },() -> {
+
+                });    ;
+    }
+
+
+
+    //   .../todo/1234
+    // GET
+    @DeleteMapping ("/todo/{id}")
+    public void deleteTodo(@RequestBody Todo todo, @PathVariable long id){
+        todos.stream().filter(result -> result.getId() == id)
+                .findFirst()
+//                .ifPresentOrElse()
+                .ifPresent(result -> {
+                    todos.remove(result);
+//                },() -> {
+
+                });    ;
+    }
+
+
 
 }
