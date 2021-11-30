@@ -1,5 +1,6 @@
 package com.example.mytodo;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class TodoController {
 
 
     // ..../todo
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/todo")
     public void addTodo(@RequestBody Todo todo){
         todos.add(new Todo(counter.getAndIncrement(), todo.getName()));
