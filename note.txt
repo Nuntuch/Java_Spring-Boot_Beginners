@@ -1,0 +1,8 @@
+Custom actions in REST URI
+There are often use cases when we need to create an API endpoint that performs a custom action. An action that is not necessarily one of the CRUD(Create, Read, Update, Delete) operations.
+
+If you need to create URIs that communicate a custom action to an API endpoint, then have a look at the following two discussions.
+
+https://stackoverflow.com/questions/25287734/rest-actions-and-url-api-design-considerations/25288269
+
+https://softwareengineering.stackexchange.com/questions/141410/restful-state-changing-actions
