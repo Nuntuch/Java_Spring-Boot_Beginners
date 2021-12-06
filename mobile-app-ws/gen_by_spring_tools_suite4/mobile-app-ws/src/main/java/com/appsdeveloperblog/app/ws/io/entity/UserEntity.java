@@ -26,7 +26,7 @@ public class UserEntity implements Serializable{
 	private String firstName;
 	
 	@Column(nullable = false , length = 50)
-	private String larstName;
+	private String lastName;
 
 	@Column(nullable = false , length = 120)
 	private String email;
@@ -65,12 +65,12 @@ public class UserEntity implements Serializable{
 		this.firstName = firstName;
 	}
 
-	public String getLarstName() {
-		return larstName;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLarstName(String larstName) {
-		this.larstName = larstName;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {
