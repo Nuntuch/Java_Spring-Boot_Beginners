@@ -37,8 +37,10 @@ public class UserController {
 		return returnValue;
 	}
 
-	@PostMapping
-	public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) {
+	@PostMapping(
+			consumes = {MediaType.APPLICATION_XML_VALUE ,MediaType.APPLICATION_JSON_VALUE},
+			produces = {MediaType.APPLICATION_XML_VALUE	,MediaType.APPLICATION_JSON_VALUE})
+	public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails ) {
 		
 		UserRest returnValue = new UserRest();
 		
