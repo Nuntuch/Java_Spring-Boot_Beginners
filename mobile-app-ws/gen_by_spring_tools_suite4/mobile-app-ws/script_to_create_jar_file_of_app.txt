@@ -1,0 +1,10 @@
+cd C:\GithubProjects\source_tree\Java_Spring-Boot_Beginners\mobile-app-ws\gen_by_spring_tools_suite4\mobile-app-ws
+
+mvn install
+
+cd target
+
+copy mobile-app-ws-0.0.1-SNAPSHOT.jar D:
+
+
+java -jar D:mobile-app-ws-0.0.1-SNAPSHOT.jar
