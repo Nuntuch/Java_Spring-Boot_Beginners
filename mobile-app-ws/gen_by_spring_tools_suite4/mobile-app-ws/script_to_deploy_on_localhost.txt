@@ -1,0 +1,7 @@
+cd C:\GithubProjects\source_tree\Java_Spring-Boot_Beginners\mobile-app-ws\gen_by_spring_tools_suite4\mobile-app-ws
+
+mvn install
+
+mvn spring-boot:run
+
+
