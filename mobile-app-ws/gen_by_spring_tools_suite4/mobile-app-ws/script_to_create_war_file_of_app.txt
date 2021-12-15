@@ -8,5 +8,3 @@ cd target
 
 copy mobile-app-ws-0.0.1-SNAPSHOT.war D:
 
-
-java -jar D:mobile-app-ws-0.0.1-SNAPSHOT.jar
