@@ -38,6 +38,9 @@ public class UserController {
 	UserService userService;
 
 	@Autowired
+	AddressService addressService;
+	
+	@Autowired
 	AddressService addressesService;
 	
 	@GetMapping(path = "/{id}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
@@ -141,5 +144,35 @@ public class UserController {
 		
 		return returnValue;
 	}
+	
+	
+	
+	@GetMapping(path = "/{userId}/addresses/{addressId}", 
+			produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	public AddressesRest getUserAddress(@PathVariable String addressId) {
+		
+		AddressDTO addressesDto = addressService.getAddress(addressId);
+		
+		ModelMapper modelMapper = new ModelMapper();	
+		
+		return modelMapper.map(addressesDto, AddressesRest.class);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
