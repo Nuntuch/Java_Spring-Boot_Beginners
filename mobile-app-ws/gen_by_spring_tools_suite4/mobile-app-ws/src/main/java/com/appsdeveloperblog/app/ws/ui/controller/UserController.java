@@ -163,19 +163,22 @@ public class UserController {
 		AddressesRest returnValue = modelMapper.map(addressesDto, AddressesRest.class);
 		
 		
+//		http://localhost:8080/mobile-app-ws-users/<userId>/addresses/{addressId}
 		Link userLink = WebMvcLinkBuilder.linkTo(UserController.class)
 				.slash(userId)
 				.withRel("user");
 
-		Link userAddressesLink = WebMvcLinkBuilder.linkTo(UserController.class)
-				.slash(userId)
-				.slash("addresses")
+		Link userAddressesLink = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(UserController.class)
+				.getUserAddresses(userId))
+//				.slash(userId)
+//				.slash("addresses")
 				.withRel("addresses");
 
-		Link selfLink = WebMvcLinkBuilder.linkTo(UserController.class)
-				.slash(userId)
-				.slash("addresses")
-				.slash(addressId)
+		Link selfLink = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(UserController.class)
+				.getUserAddress(userId,addressId))
+//				.slash(userId)
+//				.slash("addresses")
+//				.slash(addressId)
 				.withSelfRel();
 				
 //		returnValue.add(userLink);
