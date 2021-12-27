@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Hello newspaper subscription</title>
+</head>
+<body>
+    <p th:text="${greeting}">Hello John</p>
+    <p>You have been successfully subscribed to the <b>Hello newsletter</b> on <span th:text="${date}"></span></p>
+    <p>Your hobbies are:</p>
+    <ul th:remove="all-but-first">
+        <li th:each="hobby : ${hobbies}" th:text="${hobby}"></li>
+    </ul>
+    <p>Regards,<br/>
+        <em>Hello Team</em>
+    </p>
+</body>
+</html>
