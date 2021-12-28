@@ -8,3 +8,14 @@ cd target
 
 copy mobile-app-ws-0.0.1-SNAPSHOT.war D:
 
+-------------------------------------------------------------------
+
+cd C:\GithubProjects\source_tree\Java_Spring-Boot_Beginners\mobile-app-ws\gen_by_spring_tools_suite4\verification-service
+
+mvn clean
+
+mvn install
+
+cd target
+
+copy verification-service.war D:
