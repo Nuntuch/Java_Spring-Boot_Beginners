@@ -4,11 +4,11 @@ import lombok.Value;
 
 import java.util.List;
 
-//@Value
+@Value
 public class SubscriptionDto {
-    private String name;
-    private String email;
-    private List<String> hobbies;
+     String name;
+     String email;
+     List<String> hobbies;
 
     public String getName() {
 		return name;
