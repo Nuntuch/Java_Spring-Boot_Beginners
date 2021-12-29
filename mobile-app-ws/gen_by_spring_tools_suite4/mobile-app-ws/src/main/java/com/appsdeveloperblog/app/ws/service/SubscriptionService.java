@@ -20,4 +20,9 @@ public class SubscriptionService {
     public void doSubscript_new(String email, String token) {
         emailService.sent_subscription(email, token);
     }
+    
+    public void doResetPassword(String email, String token) {
+        emailService.sent_reset_password(email, token);
+    }    
+    
 }

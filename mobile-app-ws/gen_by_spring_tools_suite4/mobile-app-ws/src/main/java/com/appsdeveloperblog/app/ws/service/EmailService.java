@@ -89,4 +89,32 @@ public class EmailService {
 
     }
     
+    
+    public void sent_reset_password( String email, String token) {
+        try {
+
+            MimeMessage mimeMessage = mailSender.createMimeMessage();
+            MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+            message.setSubject("Subscription");
+            message.setTo(email);
+
+
+            String content = "http://localhost:8080/verification-service/password-reset.html?token=" + token;
+            message.setText(content, true);
+            
+            System.out.println("DEBUG : public void sent_subscription is working !!!");
+            
+            mailSender.send(mimeMessage);
+        } catch (Exception e) {
+            System.err.print("Error: " + e.getMessage() + " : "+ e);
+        }
+
+    }
+    
+    
+    
+    
+    
+    
+    
 }
