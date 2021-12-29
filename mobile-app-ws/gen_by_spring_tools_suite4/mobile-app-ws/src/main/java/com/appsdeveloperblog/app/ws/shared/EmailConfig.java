@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.app.ws.email;
+package com.appsdeveloperblog.app.ws.shared;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.app.ws.email.subscription;
+package com.appsdeveloperblog.app.ws.ui.controller;
 
 
 
@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.appsdeveloperblog.app.ws.service.SubscriptionService;
+import com.appsdeveloperblog.app.ws.shared.dto.SubscriptionDto;
 
 @RestController
 @RequestMapping("/subscriptions")

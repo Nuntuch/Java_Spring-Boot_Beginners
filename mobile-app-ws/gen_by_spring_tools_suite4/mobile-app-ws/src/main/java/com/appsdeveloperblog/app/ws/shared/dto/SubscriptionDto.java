@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.app.ws.email.subscription;
+package com.appsdeveloperblog.app.ws.shared.dto;
 
 import lombok.Value;
 

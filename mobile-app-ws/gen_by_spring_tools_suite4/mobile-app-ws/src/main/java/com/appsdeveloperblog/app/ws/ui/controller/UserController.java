@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.appsdeveloperblog.app.ws.exceptions.UserServiceException;
 import com.appsdeveloperblog.app.ws.service.AddressService;
+import com.appsdeveloperblog.app.ws.service.SubscriptionService;
 import com.appsdeveloperblog.app.ws.service.UserService;
 import com.appsdeveloperblog.app.ws.shared.dto.AddressDTO;
 import com.appsdeveloperblog.app.ws.shared.dto.UserDto;
@@ -37,10 +38,17 @@ import com.appsdeveloperblog.app.ws.ui.model.response.OperationStatusModel;
 import com.appsdeveloperblog.app.ws.ui.model.response.RequestOperationStatus;
 import com.appsdeveloperblog.app.ws.ui.model.response.UserRest;
 
+
+
+import com.appsdeveloperblog.app.ws.service.SubscriptionService;
+import com.appsdeveloperblog.app.ws.shared.dto.SubscriptionDto;
+
 @RestController
 @RequestMapping("users") // http:localhost:8080/users
 public class UserController {
-
+	
+//	private SubscriptionService subscriptionService;
+	
 	@Autowired
 	UserService userService;
 
@@ -63,7 +71,9 @@ public class UserController {
 	@PostMapping(consumes = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }, produces = {
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
 	public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) throws Exception {
-
+		
+	
+		
 		UserRest returnValue = new UserRest();
 
 //		if(userDetails.getFirstName().isEmpty()) throw new UserServiceException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());
@@ -79,7 +89,7 @@ public class UserController {
 		UserDto createdUser = userService.createUser(userDto);
 //		BeanUtils.copyProperties(createdUser, returnValue);
 		returnValue = modelMapper.map(createdUser, UserRest.class);
-
+		
 		return returnValue;
 	}
 

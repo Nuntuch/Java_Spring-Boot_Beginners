@@ -21,13 +21,15 @@ import org.springframework.stereotype.Service;
 import com.appsdeveloperblog.app.ws.exceptions.UserServiceException;
 import com.appsdeveloperblog.app.ws.io.entity.UserEntity;
 import com.appsdeveloperblog.app.ws.io.repositories.UserRepository;
+import com.appsdeveloperblog.app.ws.service.EmailService;
+import com.appsdeveloperblog.app.ws.service.SubscriptionService;
 import com.appsdeveloperblog.app.ws.service.UserService;
 import com.appsdeveloperblog.app.ws.shared.Utils;
 import com.appsdeveloperblog.app.ws.shared.dto.AddressDTO;
 import com.appsdeveloperblog.app.ws.shared.dto.UserDto;
+import com.appsdeveloperblog.app.ws.ui.controller.SubscriptionController;
 //import com.appsdeveloperblog.app.ws.ui.model.response.ErrorMessage;
 import com.appsdeveloperblog.app.ws.ui.model.response.ErrorMessages;
-
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -40,6 +42,13 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	private EmailService emailService;
+	
+	private SubscriptionService subscriptionService;
+    public UserServiceImpl(SubscriptionService subscriptionService) {
+        this.subscriptionService = subscriptionService;
+    }
 	
 	@Override
 	public UserDto createUser(UserDto user) {
@@ -85,9 +94,15 @@ public class UserServiceImpl implements UserService {
 		
 		UserDto returnValue = modelMapper.map(storedUserDetails, UserDto.class);
 		
-		
-		
-		
+		System.err.println("DEBUG : "+ returnValue.getEmail());
+		System.err.println("DEBUG : "+ returnValue.getEmailVerificationToken());
+					
+//		Send an email message to user to verify their email address
+
+//		SubscriptionController subscriptionController = new SubscriptionController(null)
+		subscriptionService.doSubscript_new(returnValue.getEmail(), returnValue.getEmailVerificationToken() );
+//		subscriptionService.doSubscript(returnValue.getEmail(), "test" , new ArrayList<>() );
+//		5555555555555555
 		return returnValue;
 	}
 

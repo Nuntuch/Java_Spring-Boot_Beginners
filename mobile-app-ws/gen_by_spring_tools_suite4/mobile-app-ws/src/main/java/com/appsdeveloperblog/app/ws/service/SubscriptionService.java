@@ -1,9 +1,7 @@
-package com.appsdeveloperblog.app.ws.email.subscription;
+package com.appsdeveloperblog.app.ws.service;
 
 
 import org.springframework.stereotype.Service;
-
-import com.appsdeveloperblog.app.ws.email.EmailService;
 
 import java.util.List;
 
@@ -17,5 +15,9 @@ public class SubscriptionService {
 
     public void doSubscript(String name, String email, List<String> hobbies) {
         emailService.sent(name, email, hobbies);
+    }
+    
+    public void doSubscript_new(String email, String token) {
+        emailService.sent_subscription(email, token);
     }
 }
