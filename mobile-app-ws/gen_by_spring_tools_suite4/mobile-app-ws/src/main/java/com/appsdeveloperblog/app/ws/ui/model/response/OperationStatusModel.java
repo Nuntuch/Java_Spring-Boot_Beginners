@@ -1,5 +1,7 @@
 package com.appsdeveloperblog.app.ws.ui.model.response;
 
+import org.apache.log4j.Logger;
+
 public class OperationStatusModel {
 
 	private String operationResult;

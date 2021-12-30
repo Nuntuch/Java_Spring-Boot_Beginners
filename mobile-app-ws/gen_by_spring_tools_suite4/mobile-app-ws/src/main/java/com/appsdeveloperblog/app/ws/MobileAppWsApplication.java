@@ -26,12 +26,12 @@ public class MobileAppWsApplication extends SpringBootServletInitializer{
 	public static void main(String[] args) {	
 		
 		
-		logger.trace("MobileAppWs Application Start...");
-		logger.debug("MobileAppWs Application Start...");
+//		logger.trace("MobileAppWs Application Start...");
+//		logger.debug("MobileAppWs Application Start...");
 		logger.info("MobileAppWs Application Start...");
-		logger.warn("MobileAppWs Application Start...");
-		logger.error("MobileAppWs Application Start...");
-		logger.fatal("MobileAppWs Application Start...");
+//		logger.warn("MobileAppWs Application Start...");
+//		logger.error("MobileAppWs Application Start...");
+//		logger.fatal("MobileAppWs Application Start...");
 		
 		
 		
@@ -40,18 +40,21 @@ public class MobileAppWsApplication extends SpringBootServletInitializer{
 
 	@Bean 
 	public BCryptPasswordEncoder bCryptPasswordEncoder(){
+		logger.trace("new BCryptPasswordEncoder");
 		return new BCryptPasswordEncoder();
 	}
 
 
 	@Bean 
 	public SpringApplicationContext springApplicationContext(){
+		logger.trace("new SpringApplicationContext");
 		return new SpringApplicationContext();
 	}
 	
 	
 	@Bean(name = "AppProperties")
 	public AppProperties getAppProperties() {
+		logger.trace("new AppProperties");
 		return new AppProperties();
 	}
 	

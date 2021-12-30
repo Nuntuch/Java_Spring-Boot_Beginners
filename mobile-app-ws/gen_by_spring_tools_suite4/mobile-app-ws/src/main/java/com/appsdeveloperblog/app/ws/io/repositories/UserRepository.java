@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.appsdeveloperblog.app.ws.io.entity.UserEntity;
 
+import org.apache.log4j.Logger;
+
 //@Repository
 //public interface UserRepository extends CrudRepository<UserEntity, Long> {
 

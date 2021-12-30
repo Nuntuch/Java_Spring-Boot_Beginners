@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
 import com.appsdeveloperblog.app.ws.ui.model.response.ErrorMessage;
+import org.apache.log4j.Logger;
 
 @ControllerAdvice
 public class AppExceptionsHandler {

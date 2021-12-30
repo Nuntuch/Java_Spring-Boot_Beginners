@@ -1,5 +1,7 @@
 package com.appsdeveloperblog.app.ws.ui.model.request;
 
+import org.apache.log4j.Logger;
+
 public class UserLoginRequestModel {
 
 	private String email;

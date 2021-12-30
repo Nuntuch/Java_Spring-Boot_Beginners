@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 import static java.lang.String.format;
+import org.apache.log4j.Logger;
 
 @Slf4j
 @Service

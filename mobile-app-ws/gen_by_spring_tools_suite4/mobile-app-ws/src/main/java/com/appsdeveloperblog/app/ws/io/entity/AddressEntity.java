@@ -8,12 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import org.apache.log4j.Logger;
 
 import com.appsdeveloperblog.app.ws.shared.dto.UserDto;
 
 @Entity(name = "addresses")
 public class AddressEntity implements Serializable {
 
+	final static Logger logger = Logger.getLogger(AddressEntity.class);
 	
 	private static final long serialVersionUID = -5946675282629359542L;
 	

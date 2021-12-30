@@ -3,6 +3,7 @@ package com.appsdeveloperblog.app.ws.security;
 import org.springframework.boot.SpringApplication;
 
 import com.appsdeveloperblog.app.ws.SpringApplicationContext;
+import org.apache.log4j.Logger;
 
 public class SecurityConstants {
 	

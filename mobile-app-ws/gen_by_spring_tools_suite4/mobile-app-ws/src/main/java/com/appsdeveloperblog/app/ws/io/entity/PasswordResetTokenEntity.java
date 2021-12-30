@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.apache.log4j.Logger;
+
 @Entity(name = "password_reset_tokens")
 public class PasswordResetTokenEntity implements Serializable {
 

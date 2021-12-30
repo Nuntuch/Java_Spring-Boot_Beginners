@@ -3,7 +3,7 @@ package com.appsdeveloperblog.app.ws.shared.dto;
 import lombok.Value;
 
 import java.util.List;
-
+import org.apache.log4j.Logger;
 //@Value
 public class SubscriptionDto {
     private String name;

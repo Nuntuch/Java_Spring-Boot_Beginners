@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+import org.apache.log4j.Logger;
+
 @Component
 public class AppProperties {
 

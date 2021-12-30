@@ -32,6 +32,7 @@ import com.appsdeveloperblog.app.ws.shared.dto.UserDto;
 import com.appsdeveloperblog.app.ws.ui.controller.SubscriptionController;
 //import com.appsdeveloperblog.app.ws.ui.model.response.ErrorMessage;
 import com.appsdeveloperblog.app.ws.ui.model.response.ErrorMessages;
+import org.apache.log4j.Logger;
 
 @Service
 public class UserServiceImpl implements UserService {

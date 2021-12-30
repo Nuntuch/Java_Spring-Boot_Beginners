@@ -11,6 +11,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.appsdeveloperblog.app.ws.service.UserService;
+import org.apache.log4j.Logger;
 
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {

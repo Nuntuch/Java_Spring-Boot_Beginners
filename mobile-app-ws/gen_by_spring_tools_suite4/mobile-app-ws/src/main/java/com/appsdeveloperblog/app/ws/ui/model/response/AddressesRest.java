@@ -1,6 +1,7 @@
 package com.appsdeveloperblog.app.ws.ui.model.response;
 
 import org.springframework.hateoas.RepresentationModel;
+import org.apache.log4j.Logger;
 
 public class AddressesRest extends RepresentationModel<AddressesRest>{
 //public class AddressesRest {

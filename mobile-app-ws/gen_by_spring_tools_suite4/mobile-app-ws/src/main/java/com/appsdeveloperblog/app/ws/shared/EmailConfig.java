@@ -6,6 +6,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
+import org.apache.log4j.Logger;
 
 @Configuration
 public class EmailConfig {

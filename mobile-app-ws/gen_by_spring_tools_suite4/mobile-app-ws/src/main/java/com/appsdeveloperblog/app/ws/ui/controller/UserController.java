@@ -44,6 +44,8 @@ import com.appsdeveloperblog.app.ws.ui.model.response.UserRest;
 
 import com.appsdeveloperblog.app.ws.service.SubscriptionService;
 import com.appsdeveloperblog.app.ws.shared.dto.SubscriptionDto;
+import org.apache.log4j.Logger;
+
 
 @RestController
 @RequestMapping("users") // http:localhost:8080/users

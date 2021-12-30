@@ -1,6 +1,7 @@
 package com.appsdeveloperblog.app.ws.shared.dto;
 
 import com.appsdeveloperblog.app.ws.io.entity.UserEntity;
+import org.apache.log4j.Logger;
 
 public class AddressDTO {
 

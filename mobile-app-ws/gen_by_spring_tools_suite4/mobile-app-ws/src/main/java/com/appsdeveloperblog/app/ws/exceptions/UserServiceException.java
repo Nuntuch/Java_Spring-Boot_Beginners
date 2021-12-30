@@ -1,4 +1,5 @@
 package com.appsdeveloperblog.app.ws.exceptions;
+import org.apache.log4j.Logger;
 
 public class UserServiceException extends RuntimeException {
 

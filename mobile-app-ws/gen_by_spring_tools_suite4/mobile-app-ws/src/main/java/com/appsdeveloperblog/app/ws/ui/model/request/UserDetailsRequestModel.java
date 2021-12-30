@@ -1,6 +1,7 @@
 package com.appsdeveloperblog.app.ws.ui.model.request;
 
 import java.util.List;
+import org.apache.log4j.Logger;
 
 public class UserDetailsRequestModel {
 

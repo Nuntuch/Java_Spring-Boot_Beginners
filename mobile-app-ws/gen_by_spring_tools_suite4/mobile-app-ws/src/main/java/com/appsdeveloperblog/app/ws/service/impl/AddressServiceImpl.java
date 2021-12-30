@@ -13,6 +13,7 @@ import com.appsdeveloperblog.app.ws.io.repositories.AddressRepository;
 import com.appsdeveloperblog.app.ws.io.repositories.UserRepository;
 import com.appsdeveloperblog.app.ws.service.AddressService;
 import com.appsdeveloperblog.app.ws.shared.dto.AddressDTO;
+import org.apache.log4j.Logger;
 
 @Service
 public class AddressServiceImpl implements AddressService {

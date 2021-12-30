@@ -15,7 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import io.jsonwebtoken.Jwts;
-
+import org.apache.log4j.Logger;
 //import java.io.IOException;
 //
 //import javax.servlet.FilterChain;

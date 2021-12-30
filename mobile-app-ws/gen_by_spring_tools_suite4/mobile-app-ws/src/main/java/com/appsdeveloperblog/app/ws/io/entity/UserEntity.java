@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.apache.log4j.Logger;
+
 @Entity(name= "users")
 public class UserEntity implements Serializable{
 

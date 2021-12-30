@@ -1,6 +1,7 @@
 package com.appsdeveloperblog.app.ws.ui.model.response;
 
 import java.util.Date;
+import org.apache.log4j.Logger;
 
 public class ErrorMessage {
 
