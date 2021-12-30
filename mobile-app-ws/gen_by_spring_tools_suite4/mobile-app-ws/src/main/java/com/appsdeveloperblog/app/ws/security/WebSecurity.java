@@ -16,6 +16,8 @@ import org.apache.log4j.Logger;
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
+	final static Logger logger = Logger.getLogger(WebSecurity.class);
+
 	private final UserService userDetailsService;
 //	private final UserDetailsService userDetailsService;
 	

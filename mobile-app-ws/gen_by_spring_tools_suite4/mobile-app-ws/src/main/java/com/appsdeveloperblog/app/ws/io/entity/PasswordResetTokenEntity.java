@@ -13,6 +13,8 @@ import org.apache.log4j.Logger;
 @Entity(name = "password_reset_tokens")
 public class PasswordResetTokenEntity implements Serializable {
 
+	final static Logger logger = Logger.getLogger(PasswordResetTokenEntity.class);
+
 	/**
 	 * 
 	 */

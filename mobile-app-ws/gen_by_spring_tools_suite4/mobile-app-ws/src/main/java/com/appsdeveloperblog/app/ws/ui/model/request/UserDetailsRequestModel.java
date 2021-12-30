@@ -5,6 +5,11 @@ import org.apache.log4j.Logger;
 
 public class UserDetailsRequestModel {
 
+
+	final static Logger logger = Logger.getLogger(UserDetailsRequestModel.class);
+
+
+	
 	private String firstName;
 	private String lastName;
 	private String email;

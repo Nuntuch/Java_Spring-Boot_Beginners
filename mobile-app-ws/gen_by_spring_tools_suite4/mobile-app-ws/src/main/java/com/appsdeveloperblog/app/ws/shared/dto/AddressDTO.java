@@ -5,6 +5,9 @@ import org.apache.log4j.Logger;
 
 public class AddressDTO {
 
+	final static Logger logger = Logger.getLogger(AddressDTO.class);
+
+
 	private long id;
 	private String addressId;
 	private String city;

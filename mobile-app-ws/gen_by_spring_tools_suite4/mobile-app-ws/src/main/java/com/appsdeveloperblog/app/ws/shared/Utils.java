@@ -18,6 +18,10 @@ import org.apache.log4j.Logger;
 
 @Component
 public class Utils {
+
+	final static Logger logger = Logger.getLogger(Utils.class);
+
+
 	private final Random RANDOM = new SecureRandom();
 	private final String ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	

@@ -6,6 +6,9 @@ import org.apache.log4j.Logger;
 
 public class UserDto implements Serializable{
 
+	final static Logger logger = Logger.getLogger(UserDto.class);
+
+
 	/**
 	 * 
 	 */

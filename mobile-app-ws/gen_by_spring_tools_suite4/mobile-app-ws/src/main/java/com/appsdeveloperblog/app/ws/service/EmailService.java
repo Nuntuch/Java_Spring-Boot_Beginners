@@ -23,6 +23,9 @@ import org.apache.log4j.Logger;
 @Slf4j
 @Service
 public class EmailService {
+	
+	final static Logger logger = Logger.getLogger(EmailService.class);
+
     private JavaMailSender mailSender;
     private TemplateEngine templateEngine;
 

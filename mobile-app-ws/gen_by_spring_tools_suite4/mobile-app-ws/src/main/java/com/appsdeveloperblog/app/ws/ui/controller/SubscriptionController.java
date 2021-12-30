@@ -15,6 +15,10 @@ import org.apache.log4j.Logger;
 @RestController
 @RequestMapping("/subscriptions")
 public class SubscriptionController {
+
+	final static Logger logger = Logger.getLogger(SubscriptionController.class);
+
+
     private SubscriptionService subscriptionService;
 
     public SubscriptionController(SubscriptionService subscriptionService) {

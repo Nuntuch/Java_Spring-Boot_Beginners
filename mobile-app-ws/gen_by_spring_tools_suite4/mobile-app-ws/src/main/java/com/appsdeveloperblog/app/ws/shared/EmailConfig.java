@@ -10,6 +10,10 @@ import org.apache.log4j.Logger;
 
 @Configuration
 public class EmailConfig {
+
+	final static Logger logger = Logger.getLogger(EmailConfig.class);
+
+
     @Bean
     public JavaMailSender javaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();

@@ -4,9 +4,13 @@ package com.appsdeveloperblog.app.ws.service;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import org.apache.log4j.Logger;
 
 @Service
 public class SubscriptionService {
+	
+	final static Logger logger = Logger.getLogger(SubscriptionService.class);
+
     private EmailService emailService;
 
     public SubscriptionService(EmailService emailService) {

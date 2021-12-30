@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
 
 @ControllerAdvice
 public class AppExceptionsHandler {
-	
+	final static Logger logger = Logger.getLogger(AppExceptionsHandler.class);
 	@ExceptionHandler(value = {UserServiceException.class})
 	public ResponseEntity<Object> handleUserServiceException (UserServiceException ex, WebRequest request){
 //		return new ResponseEntity<>(ex.getMessage(),new HttpHeaders(),HttpStatus.INTERNAL_SERVER_ERROR);

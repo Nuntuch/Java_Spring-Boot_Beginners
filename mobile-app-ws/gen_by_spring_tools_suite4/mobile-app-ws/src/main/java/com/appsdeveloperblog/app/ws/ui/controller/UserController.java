@@ -50,7 +50,10 @@ import org.apache.log4j.Logger;
 @RestController
 @RequestMapping("users") // http:localhost:8080/users
 public class UserController {
-	
+
+	final static Logger logger = Logger.getLogger(UserController.class);
+
+
 //	private SubscriptionService subscriptionService;
 	
 	@Autowired

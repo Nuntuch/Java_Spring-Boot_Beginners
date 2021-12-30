@@ -18,6 +18,9 @@ import org.apache.log4j.Logger;
 @Service
 public class AddressServiceImpl implements AddressService {
 
+	final static Logger logger = Logger.getLogger(AddressServiceImpl.class);
+
+
 	@Autowired
 	UserRepository userRepository;
 	

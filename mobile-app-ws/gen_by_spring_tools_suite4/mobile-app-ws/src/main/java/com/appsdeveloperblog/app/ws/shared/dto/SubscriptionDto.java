@@ -6,6 +6,10 @@ import java.util.List;
 import org.apache.log4j.Logger;
 //@Value
 public class SubscriptionDto {
+
+	final static Logger logger = Logger.getLogger(SubscriptionDto.class);
+
+
     private String name;
     private String email;
     private List<String> hobbies;

@@ -51,6 +51,8 @@ import org.apache.log4j.Logger;
 
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 	
+	final static Logger logger = Logger.getLogger(AuthenticationFilter.class);
+
 	private final AuthenticationManager authenticationManager;
 	
 	public AuthenticationFilter(AuthenticationManager authenticationManager) {

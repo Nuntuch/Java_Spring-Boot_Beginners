@@ -4,6 +4,9 @@ import org.apache.log4j.Logger;
 
 public class AddressRequestModel {
 
+	final static Logger logger = Logger.getLogger(AddressRequestModel.class);
+
+
 	private String city;
 	private String country;
 	private String streeName;

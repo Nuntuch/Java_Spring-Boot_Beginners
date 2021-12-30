@@ -37,6 +37,9 @@ import org.apache.log4j.Logger;
 @Service
 public class UserServiceImpl implements UserService {
 
+final static Logger logger = Logger.getLogger(UserServiceImpl.class);
+
+
 	@Autowired
 	UserRepository userRepository;
 	

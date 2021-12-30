@@ -4,6 +4,10 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 public class UserRest {
+	
+	final static Logger logger = Logger.getLogger(UserRest.class);
+
+
 	private String userId;
 	private String firstName;
 	private String lastName;

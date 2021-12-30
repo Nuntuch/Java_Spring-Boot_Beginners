@@ -3,6 +3,7 @@ import org.apache.log4j.Logger;
 
 public class UserServiceException extends RuntimeException {
 
+	final static Logger logger = Logger.getLogger(UserServiceException.class);
 	/**
 	 * 
 	 */

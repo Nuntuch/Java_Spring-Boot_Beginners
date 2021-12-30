@@ -4,6 +4,9 @@ import org.apache.log4j.Logger;
 
 public class OperationStatusModel {
 
+	final static Logger logger = Logger.getLogger(OperationStatusModel.class);
+
+
 	private String operationResult;
 	private String operationName;
 

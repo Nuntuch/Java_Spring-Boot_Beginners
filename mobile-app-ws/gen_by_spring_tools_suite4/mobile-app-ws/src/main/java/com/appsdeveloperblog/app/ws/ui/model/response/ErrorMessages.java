@@ -1,7 +1,6 @@
 package com.appsdeveloperblog.app.ws.ui.model.response;
 
 import javax.management.loading.PrivateClassLoader;
-import org.apache.log4j.Logger;
 
 public enum ErrorMessages {
 

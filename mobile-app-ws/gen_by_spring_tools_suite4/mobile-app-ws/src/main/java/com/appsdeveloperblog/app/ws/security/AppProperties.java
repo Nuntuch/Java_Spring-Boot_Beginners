@@ -10,6 +10,8 @@ import org.apache.log4j.Logger;
 @Component
 public class AppProperties {
 
+	final static Logger logger = Logger.getLogger(AppProperties.class);
+	
 	@Autowired
 	private Environment env;
 	

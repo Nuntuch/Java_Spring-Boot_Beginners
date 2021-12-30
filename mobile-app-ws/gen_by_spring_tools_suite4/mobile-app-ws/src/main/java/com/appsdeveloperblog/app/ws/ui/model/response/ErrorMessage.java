@@ -5,6 +5,9 @@ import org.apache.log4j.Logger;
 
 public class ErrorMessage {
 
+	final static Logger logger = Logger.getLogger(ErrorMessage.class);
+
+
 		private Date timestamp;
 		private String message;
 		

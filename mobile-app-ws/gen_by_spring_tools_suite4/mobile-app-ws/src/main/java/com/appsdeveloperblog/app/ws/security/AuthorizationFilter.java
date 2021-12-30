@@ -31,6 +31,8 @@ import org.apache.log4j.Logger;
 
 public class AuthorizationFilter extends BasicAuthenticationFilter {
 
+	final static Logger logger = Logger.getLogger(AuthorizationFilter.class);
+
 	public AuthorizationFilter(AuthenticationManager authManager) {
 		super(authManager);
 	

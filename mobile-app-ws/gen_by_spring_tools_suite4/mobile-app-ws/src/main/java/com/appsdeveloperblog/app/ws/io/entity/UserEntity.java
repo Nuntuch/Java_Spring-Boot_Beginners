@@ -15,6 +15,9 @@ import org.apache.log4j.Logger;
 @Entity(name= "users")
 public class UserEntity implements Serializable{
 
+	final static Logger logger = Logger.getLogger(UserEntity.class);
+
+	
 	/**
 	 * 
 	 */
