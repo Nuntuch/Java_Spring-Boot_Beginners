@@ -16,7 +16,7 @@ $(document).ready(function () {
     
     function verifyToken(tokenValue)
     {
-        $.get('http://localhost:8080/mobile-app-ws/users/email-verification', {token: tokenValue})
+        $.get('http://localhost:8046/mobile-app-ws/users/email-verification', {token: tokenValue})
         .done(function (response) {
         	
             if (response["operationResult"] === "SUCCESS")
