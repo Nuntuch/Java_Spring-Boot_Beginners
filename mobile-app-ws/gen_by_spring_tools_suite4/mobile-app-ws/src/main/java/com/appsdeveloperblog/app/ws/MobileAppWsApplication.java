@@ -6,6 +6,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.appsdeveloperblog.app.ws.security.AppProperties;
 
@@ -59,4 +61,14 @@ public class MobileAppWsApplication extends SpringBootServletInitializer{
 	}
 	
 	
+//	@Bean
+//	public WebMvcConfigurer corsConfigurer() {
+//		return new WebMvcConfigurer() {
+//			@Override
+//			public void addCorsMappings(CorsRegistry registry) {
+//				registry.addMapping("/password-reset").allowedOrigins("http://localhost:8080");
+//				logger.trace("allowedOrigins(\"http://localhost:8080\")");
+//			}
+//		};
+//	}
 }
