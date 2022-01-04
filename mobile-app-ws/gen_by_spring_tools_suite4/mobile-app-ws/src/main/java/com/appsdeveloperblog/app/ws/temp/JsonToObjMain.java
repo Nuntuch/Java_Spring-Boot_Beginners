@@ -55,22 +55,3 @@ public class JsonToObjMain {
 
 }
 
-
-
-@Data
- class Order {
-	  private int id;
-	  private Customer customer;
-	}
-
-@Data
- class Customer {
-	  private int id;        
-	  private Address address;
-	}
-
-@Data
- class Address {
-	  private String street;
-	  private String city;
-	}
