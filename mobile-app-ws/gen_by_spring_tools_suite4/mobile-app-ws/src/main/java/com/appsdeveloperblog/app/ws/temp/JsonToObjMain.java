@@ -24,18 +24,10 @@ public class JsonToObjMain {
 	
 	public static void main(String[] args) throws Exception {
 		
-//       String file = "src/test/resources/myFile.json";        
-//		 String file = "/mobile-app-ws/src/main/java/com/appsdeveloperblog/app/ws/temp/JsonToObj.json";
-//		 String file = "src/main/java/com/appsdeveloperblog/app/ws/temp/JsonToObj.json";
-//	     String json = readFileAsString(file);
-//	     String json = readFile
-//        System.out.println(json);
-//	    JSONParser parser = new JSONParser();
-//	    try {
-//	    	Object obj = parser.parse("src/main/java/com/appsdeveloperblog/app/ws/temp/JsonToObj.json");
-//	    	JSONObject jsonObject = (JSONObject) obj;
-	  
-       String  json = "{\"id\": 456, \"customer\": {\"id\": 789,\"street_address\": \"123 Main Street\",\"address_city\": \"SF\"}}";
+		 String file = "src/main/java/com/appsdeveloperblog/app/ws/temp/JsonToObj.json";
+	     String json = readFileAsString(file);
+
+//       String  json = "{\"id\": 456, \"customer\": {\"id\": 789,\"street_address\": \"123 Main Street\",\"address_city\": \"SF\"}}";
         System.out.println(json);
         
 		ModelMapper modelMapper = new ModelMapper();
@@ -44,15 +36,7 @@ public class JsonToObjMain {
 		JsonNode orderNode = new ObjectMapper().readTree(json);
 		Order order = modelMapper.map(orderNode, Order.class);
  
-//	    	}catch (ParserException e) {
-	    	
-//	    }
-		
-//		assertEquals(order.getId(), 456);
-//		assertEquals(order.getCustomer().getId(), 789);
-//		assertEquals(order.getCustomer().getAddress().getStreet(), "123 Main Street");
-//		assertEquals(order.getCustomer().getAddress().getCity(), "SF");		
-////		
+	
 		System.out.println(order.getId());
 		System.out.println(order.getCustomer().getId());
 		System.out.println(order.getCustomer().getAddress().getStreet());
@@ -60,10 +44,10 @@ public class JsonToObjMain {
 	}
 	
 	
-//    public static String readFileAsString(String file)throws Exception
-//    {
-//        return new String(Files.readAllBytes(Paths.get(file)));
-//    }
+    public static String readFileAsString(String file)throws Exception
+    {
+        return new String(Files.readAllBytes(Paths.get(file)));
+    }
 
 
     
