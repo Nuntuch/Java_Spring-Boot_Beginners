@@ -47,7 +47,7 @@ import com.appsdeveloperblog.app.ws.service.SubscriptionService;
 import com.appsdeveloperblog.app.ws.shared.dto.SubscriptionDto;
 import org.apache.log4j.Logger;
 
-
+@CrossOrigin(origins = "http://localhost:8046")
 @RestController
 @RequestMapping("users") // http:localhost:8080/users
 public class UserController {
@@ -273,7 +273,7 @@ public class UserController {
    }
    
    
-   @CrossOrigin(origins = "http://localhost:8080")
+//   @CrossOrigin(origins = "http://localhost:8046")
    @PostMapping(path = "/password-reset",
            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
    )
