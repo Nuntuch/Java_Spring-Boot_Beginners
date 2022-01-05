@@ -7,6 +7,7 @@ import java.util.Random;
 import javax.persistence.GeneratedValue;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.appsdeveloperblog.app.ws.security.SecurityConstants;
 
@@ -16,7 +17,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.log4j.Logger;
 
-@Component
+//@Component
+@Service
 public class Utils {
 
 	final static Logger logger = Logger.getLogger(Utils.class);

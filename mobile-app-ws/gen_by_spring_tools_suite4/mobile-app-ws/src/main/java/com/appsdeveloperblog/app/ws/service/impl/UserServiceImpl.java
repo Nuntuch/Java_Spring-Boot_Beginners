@@ -55,7 +55,9 @@ final static Logger logger = Logger.getLogger(UserServiceImpl.class);
 	
 	private EmailService emailService;
 	
-	private SubscriptionService subscriptionService;
+//	private SubscriptionService subscriptionService;
+	@Autowired 
+	SubscriptionService subscriptionService;
 	
     public UserServiceImpl(SubscriptionService subscriptionService) {
         this.subscriptionService = subscriptionService;
@@ -66,8 +68,8 @@ final static Logger logger = Logger.getLogger(UserServiceImpl.class);
 		
 //		if(userRepository.findByEmail(user.getEmail()) != null) throw new RuntimeException("Record already exits");
 		if(userRepository.findByEmail(user.getEmail()) != null) {
-			System.err.print("............................throw new RuntimeException(\"Record already exits\"); is working............................");
-			throw new RuntimeException("Record already exits");
+//			System.err.print("............................throw new RuntimeException(\"Record already exits\"); is working............................");
+			throw new UserServiceException("Record already exits");
 		}
 		
 		
