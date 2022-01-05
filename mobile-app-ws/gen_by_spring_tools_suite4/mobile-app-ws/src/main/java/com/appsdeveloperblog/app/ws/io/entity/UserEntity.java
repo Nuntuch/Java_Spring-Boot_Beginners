@@ -9,10 +9,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.apache.log4j.Logger;
 
-@Entity(name= "users")
+//@Entity(name= "users")
+
+@Entity
+@Table(name="users")
 public class UserEntity implements Serializable{
 
 	final static Logger logger = Logger.getLogger(UserEntity.class);
