@@ -39,15 +39,15 @@ public class UserEntity implements Serializable{
 	@Column(nullable = false , length = 120, unique = true)
 	private String email;
 
-	@Column(nullable = false)
-	private String password;
+//	@Column(nullable = false)
+//	private String password;
 	
 	private String encryptedPassword;
 	
 	private String emailVerificationToken;
 	
 	@Column(nullable = false)	
-	private boolean emailVerificationStatus = false;
+	private Boolean emailVerificationStatus = false;
 	
 	@OneToMany(mappedBy = "userDetails", cascade = CascadeType.ALL)
 	private List<AddressEntity> addresses;
@@ -95,13 +95,13 @@ public class UserEntity implements Serializable{
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
+//	public String getPassword() {
+//		return password;
+//	}
+//
+//	public void setPassword(String password) {
+//		this.password = password;
+//	}
 
 	public String getEncryptedPassword() {
 		return encryptedPassword;
@@ -119,11 +119,11 @@ public class UserEntity implements Serializable{
 		this.emailVerificationToken = emailVerificationToken;
 	}
 
-	public boolean getEmailVerificationStatus() {
+	public Boolean getEmailVerificationStatus() {
 		return emailVerificationStatus;
 	}
 
-	public void setEmailVerificationStatus(boolean emailVerificationStatus) {
+	public void setEmailVerificationStatus(Boolean emailVerificationStatus) {
 		this.emailVerificationStatus = emailVerificationStatus;
 	}
 

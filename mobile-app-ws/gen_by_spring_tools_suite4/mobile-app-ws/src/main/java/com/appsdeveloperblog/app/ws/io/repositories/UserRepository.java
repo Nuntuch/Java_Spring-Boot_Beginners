@@ -23,8 +23,9 @@ public interface UserRepository extends PagingAndSortingRepository<UserEntity, L
 	
 	UserEntity findUserByEmailVerificationToken(String token); 
 //	
-//	@Query(value="select * from Users u where u.EMAIL_VERIFICATION_STATUS = 'true'", 
-//			countQuery="select count(*) from Users u where u.EMAIL_VERIFICATION_STATUS = 'true'", 
-//			nativeQuery = true)
-//	Page<UserEntity> findAllUsersWithConfirmedEmailAddress( Pageable pageableRequest );
+	@Query(value="select * from Users u where u.EMAIL_VERIFICATION_STATUS is true", 
+			countQuery="select count(*) from Users u where u.EMAIL_VERIFICATION_STATUS is true", 
+			nativeQuery = true)
+	Page<UserEntity> findAllUsersWithConfirmedEmailAddress( Pageable pageableRequest );
+	
 }
