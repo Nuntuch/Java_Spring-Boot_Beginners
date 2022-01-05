@@ -80,6 +80,21 @@ class UserRepositoryTest {
 	}
 	
 	
+	@Test 
+	final void testFindUsersByKeyword()
+	{
+		String keyword="erg";
+		List<UserEntity> users = userRepository.findUsersByKeyword(keyword);
+		assertNotNull(users);
+		assertTrue(users.size() == 2);
+		
+		UserEntity user = users.get(0);
+		assertTrue(
+				user.getLastName().contains(keyword) ||
+				user.getFirstName().contains(keyword)
+				);
+	}
+	
 	
 	private void createRecrods()
 	{
