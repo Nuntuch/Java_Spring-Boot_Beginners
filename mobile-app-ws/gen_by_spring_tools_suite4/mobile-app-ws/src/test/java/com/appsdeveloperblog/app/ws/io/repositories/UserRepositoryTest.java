@@ -52,60 +52,74 @@ class UserRepositoryTest {
 	}
 	
 
+	@Test 
+	final void testFindUserByFirstName()
+	{
+		String firstName="Sergey";
+		List<UserEntity> users = userRepository.findUserByFirstName(firstName);
+		assertNotNull(users);
+//		assertTrue(users.size() == 2);
+		assertTrue(users.size() == 1);
+		
+		UserEntity user = users.get(0);
+		assertTrue(user.getFirstName().equals(firstName));
+	}
+	
+	
 	private void createRecrods()
 	{
-//		// Prepare User Entity
-//	     UserEntity userEntity = new UserEntity();
-//	     userEntity.setFirstName("Sergey");
-//	     userEntity.setLastName("Kargopolov");
-//	     userEntity.setUserId("1a2b3c");
-//	     userEntity.setEncryptedPassword("xxx");
-//	     userEntity.setEmail("test@test.com");
-//	     userEntity.setEmailVerificationStatus(true);
-//	     
-//	     // Prepare User Addresses
-//	     AddressEntity addressEntity = new AddressEntity();
-//	     addressEntity.setType("shipping");
-//	     addressEntity.setAddressId("ahgyt74hfy");
-//	     addressEntity.setCity("Vancouver");
-//	     addressEntity.setCountry("Canada");
-//	     addressEntity.setPostalCode("ABCCDA");
-//	     addressEntity.setStreetName("123 Street Address");
-//
-//	     List<AddressEntity> addresses = new ArrayList<>();
-//	     addresses.add(addressEntity);
-//	     
-//	     userEntity.setAddresses(addresses);
-//	     
-//	     userRepository.save(userEntity);
-//	     
-//	     
-//	     
-//	     
-//			// Prepare User Entity
-//	     UserEntity userEntity2 = new UserEntity();
-//	     userEntity2.setFirstName("Sergey");
-//	     userEntity2.setLastName("Kargopolov");
-//	     userEntity2.setUserId("1a2b3cddddd");
-//	     userEntity2.setEncryptedPassword("xxx");
-//	     userEntity2.setEmail("test@test.com");
-//	     userEntity2.setEmailVerificationStatus(true);
-//	     
-//	     // Prepare User Addresses
-//	     AddressEntity addressEntity2 = new AddressEntity();
-//	     addressEntity2.setType("shipping");
-//	     addressEntity2.setAddressId("ahgyt74hfywwww");
-//	     addressEntity2.setCity("Vancouver");
-//	     addressEntity2.setCountry("Canada");
-//	     addressEntity2.setPostalCode("ABCCDA");
-//	     addressEntity2.setStreetName("123 Street Address");
-//
-//	     List<AddressEntity> addresses2 = new ArrayList<>();
-//	     addresses2.add(addressEntity2);
-//	     
-//	     userEntity2.setAddresses(addresses2);
-//	     
-//	     userRepository.save(userEntity2);
+		// Prepare User Entity
+	     UserEntity userEntity = new UserEntity();
+	     userEntity.setFirstName("Sergey");
+	     userEntity.setLastName("Kargopolov");
+	     userEntity.setUserId("1a2b3c");
+	     userEntity.setEncryptedPassword("xxx");
+	     userEntity.setEmail("test@test.com");
+	     userEntity.setEmailVerificationStatus(true);
+	     
+	     // Prepare User Addresses
+	     AddressEntity addressEntity = new AddressEntity();
+	     addressEntity.setType("shipping");
+	     addressEntity.setAddressId("ahgyt74hfy");
+	     addressEntity.setCity("Vancouver");
+	     addressEntity.setCountry("Canada");
+	     addressEntity.setPostalCode("ABCCDA");
+	     addressEntity.setStreetName("123 Street Address");
+
+	     List<AddressEntity> addresses = new ArrayList<>();
+	     addresses.add(addressEntity);
+	     
+	     userEntity.setAddresses(addresses);
+	     
+	     userRepository.save(userEntity);
+	     
+	     
+	     
+	     
+			// Prepare User Entity
+	     UserEntity userEntity2 = new UserEntity();
+	     userEntity2.setFirstName("Sergey2");
+	     userEntity2.setLastName("Kargopolov");
+	     userEntity2.setUserId("1a2b3cddddd");
+	     userEntity2.setEncryptedPassword("xxx");
+	     userEntity2.setEmail("test2@test.com");
+	     userEntity2.setEmailVerificationStatus(true);
+	     
+	     // Prepare User Addresses
+	     AddressEntity addressEntity2 = new AddressEntity();
+	     addressEntity2.setType("shipping");
+	     addressEntity2.setAddressId("ahgyt74hfywwww");
+	     addressEntity2.setCity("Vancouver");
+	     addressEntity2.setCountry("Canada");
+	     addressEntity2.setPostalCode("ABCCDA");
+	     addressEntity2.setStreetName("123 Street Address");
+
+	     List<AddressEntity> addresses2 = new ArrayList<>();
+	     addresses2.add(addressEntity2);
+	     
+	     userEntity2.setAddresses(addresses2);
+	     
+	     userRepository.save(userEntity2);
 	     
 	     recordsCreated = true;
     
