@@ -121,6 +121,21 @@ class UserRepositoryTest {
 	}
 	
 	
+	
+	@Test 
+	final void testUpdateUserEmailVerificationStatus()
+	{
+		boolean newEmailVerificationStatus = true;
+		userRepository.updateUserEmailVerificationStatus(newEmailVerificationStatus, "1a2b3c");
+		
+		UserEntity storedUserDetails = userRepository.findByUserId("1a2b3c");
+		
+		boolean storedEmailVerificationStatus = storedUserDetails.getEmailVerificationStatus();
+		
+		assertTrue(storedEmailVerificationStatus == newEmailVerificationStatus);
+
+	}
+	
 	private void createRecrods()
 	{
 		// Prepare User Entity
