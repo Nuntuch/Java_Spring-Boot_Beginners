@@ -62,6 +62,8 @@ public class Utils {
 			returnValue = tokenExpirationDate.before(todayDate);
 		} catch (ExpiredJwtException ex) {
 			returnValue = true;
+		} catch (Exception e) {
+			returnValue = true;
 		}
 
 		return returnValue;
