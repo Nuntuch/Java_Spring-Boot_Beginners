@@ -1,10 +1,12 @@
 package com.appsdeveloperblog.app.ws;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -16,6 +18,8 @@ import java.sql.*;
 import org.apache.log4j.Logger;
 
 @SpringBootApplication
+@EnableAutoConfiguration
+@EnableJpaRepositories
 public class MobileAppWsApplication extends SpringBootServletInitializer{
 
 	final static Logger logger = Logger.getLogger(MobileAppWsApplication.class);

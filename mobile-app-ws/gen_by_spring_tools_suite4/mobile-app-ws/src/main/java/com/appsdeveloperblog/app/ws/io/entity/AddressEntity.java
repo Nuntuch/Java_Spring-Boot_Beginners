@@ -8,11 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import org.apache.log4j.Logger;
 
 import com.appsdeveloperblog.app.ws.shared.dto.UserDto;
 
-@Entity(name = "addresses")
+@Entity
+@Table(name = "addresses")
 public class AddressEntity implements Serializable {
 
 	final static Logger logger = Logger.getLogger(AddressEntity.class);
