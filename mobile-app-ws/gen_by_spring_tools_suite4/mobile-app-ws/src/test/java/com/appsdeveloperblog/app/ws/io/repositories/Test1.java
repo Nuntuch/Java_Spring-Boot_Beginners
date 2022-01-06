@@ -33,7 +33,6 @@ class Test1 {
 	@Test
 	void test() {
 		assertTrue("123".equals("123"));
-		
 	}
 	
 	private void createRecords()

@@ -24,7 +24,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -39,7 +38,6 @@ import com.appsdeveloperblog.app.ws.shared.Utils;
 import com.appsdeveloperblog.app.ws.shared.dto.AddressDTO;
 import com.appsdeveloperblog.app.ws.shared.dto.UserDto;
 //class UserServiceimplTest {
-@EnableJpaRepositories
 class UserServiceImplTest {
 
 	@InjectMocks
@@ -84,10 +82,10 @@ class UserServiceImplTest {
 
 	@Test
 	final void testGetUser() {
-		UserEntity test = userEntity;
+ 
 		when(userRepository.findByEmail(anyString())).thenReturn(userEntity);
 
-		UserDto userDto = userService.getUser("test1@test.com");
+		UserDto userDto = userService.getUser("test@test.com");
 
 		assertNotNull(userDto);
 		assertEquals("Sergey", userDto.getFirstName());

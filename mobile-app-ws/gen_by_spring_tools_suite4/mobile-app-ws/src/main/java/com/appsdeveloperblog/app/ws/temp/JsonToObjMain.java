@@ -37,10 +37,10 @@ public class JsonToObjMain {
 		Order order = modelMapper.map(orderNode, Order.class);
  
 	
-//		System.out.println(order.getId());
-//		System.out.println(order.getCustomer().getId());
-//		System.out.println(order.getCustomer().getAddress().getStreet());
-//		System.out.println(order.getCustomer().getAddress().getCity());
+		System.out.println(order.getId());
+		System.out.println(order.getCustomer().getId());
+		System.out.println(order.getCustomer().getAddress().getStreet());
+		System.out.println(order.getCustomer().getAddress().getCity());
 	}
 	
 	

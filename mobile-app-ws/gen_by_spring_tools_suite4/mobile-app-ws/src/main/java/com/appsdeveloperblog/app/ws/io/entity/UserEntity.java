@@ -12,9 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.log4j.Logger;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 //@Entity(name= "users")
+
 @Entity
 @Table(name="users")
 public class UserEntity implements Serializable{
