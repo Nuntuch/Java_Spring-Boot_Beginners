@@ -7,6 +7,7 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -38,7 +39,9 @@ import org.apache.log4j.Logger;
 public class UserServiceImpl implements UserService {
 
 final static Logger logger = Logger.getLogger(UserServiceImpl.class);
-
+	
+	@Value("${dev.status}")
+	private String dev_status;
 
 	@Autowired
 	UserRepository userRepository;
@@ -100,6 +103,17 @@ final static Logger logger = Logger.getLogger(UserServiceImpl.class);
 		userEntity.setEmailVerificationToken(utils.generateEmailVerificationToken(publicUserId));
 		userEntity.setEmailVerificationStatus(false);
 		
+		logger.trace("dev_status : "+dev_status);
+		
+		if(dev_status.equals("True")) {
+			
+			userEntity.setEmailVerificationStatus(true);	
+			logger.trace("setEmailVerificationStatus : true");
+			userEntity.setEmailVerificationToken(null);
+			logger.trace("setEmailVerificationToken : null");
+		}
+		
+		
 		UserEntity storedUserDetails = userRepository.save(userEntity);
 		
 //		UserDto returnValue = new UserDto();
@@ -111,11 +125,16 @@ final static Logger logger = Logger.getLogger(UserServiceImpl.class);
 		System.err.println("DEBUG : "+ returnValue.getEmailVerificationToken());
 					
 //		Send an email message to user to verify their email address
-
-//		SubscriptionController subscriptionController = new SubscriptionController(null)
-		subscriptionService.doSubscript_new(returnValue.getEmail(), returnValue.getEmailVerificationToken() );
-//		subscriptionService.doSubscript(returnValue.getEmail(), "test" , new ArrayList<>() );
-//		5555555555555555
+		if(dev_status.equals("True")) {
+			logger.trace("skip send email verification");
+		}else {
+			
+//			SubscriptionController subscriptionController = new SubscriptionController(null)
+			subscriptionService.doSubscript_new(returnValue.getEmail(), returnValue.getEmailVerificationToken() );
+//			subscriptionService.doSubscript(returnValue.getEmail(), "test" , new ArrayList<>() );
+						
+		}
+		
 		return returnValue;
 	}
 

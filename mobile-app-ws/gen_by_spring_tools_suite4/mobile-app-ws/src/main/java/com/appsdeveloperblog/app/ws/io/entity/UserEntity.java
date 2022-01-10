@@ -66,12 +66,12 @@ public class UserEntity implements Serializable{
 	private List<AddressEntity> addresses;
 	
 
-	@ManyToMany(cascade= { CascadeType.PERSIST }, fetch = FetchType.EAGER )
-	@JoinTable(name="users_roles", 
-			joinColumns=@JoinColumn(name="users_id",referencedColumnName="id"), 
-			inverseJoinColumns=@JoinColumn(name="roles_id",referencedColumnName="id"))
-	private Collection<RoleEntity> roles;
-	
+//	@ManyToMany(cascade= { CascadeType.PERSIST }, fetch = FetchType.EAGER )
+//	@JoinTable(name="users_roles", 
+//			joinColumns=@JoinColumn(name="users_id",referencedColumnName="id"), 
+//			inverseJoinColumns=@JoinColumn(name="roles_id",referencedColumnName="id"))
+//	private Collection<RoleEntity> roles;
+//	
 
 	public long getId() {
 		return id;
