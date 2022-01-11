@@ -65,33 +65,34 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 		
 	}
 
-
-	private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-		String token = request.getHeader(SecurityConstants.HEADER_STRING);
-		
-		if(token != null) {
-			
-			token = token.replace(SecurityConstants.TOKEN_PREFIX, "");
-			
-			String user = Jwts.parser()
-					.setSigningKey(SecurityConstants.getTokenSecret())
-					.parseClaimsJws(token)
-					.getBody()
-					.getSubject();
-			
-			if(user != null) {
-				
-				UserEntity userEntity = userRepository.findByEmail(user);
-				UserPrincipal userPrincipal = new UserPrincipal(userEntity);
-				
-				return new UsernamePasswordAuthenticationToken(user,null,new ArrayList<>());	
-			}
-			
-			
-		}
-		
-		return null;
-	}
-	
-	
+    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
+        String token = request.getHeader(SecurityConstants.HEADER_STRING);
+        
+        if (token != null) {
+            
+            token = token.replace(SecurityConstants.TOKEN_PREFIX, "");
+            
+            String user = Jwts.parser()
+                    .setSigningKey( SecurityConstants.getTokenSecret() )
+                    .parseClaimsJws( token )
+                    .getBody()
+                    .getSubject();
+            
+            if (user != null) {
+            	UserEntity userEntity = userRepository.findByEmail(user);
+            	if(userEntity == null) return null;
+            	
+            	UserPrincipal userPrincipal = new UserPrincipal(userEntity);
+                return new UsernamePasswordAuthenticationToken(userPrincipal, null, userPrincipal.getAuthorities());
+            }
+            
+            return null;
+        }
+        
+        return null;
+    }
+    
 }
+
+	
+

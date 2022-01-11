@@ -127,7 +127,8 @@ public class UserController {
 	}
 	
 //	@Secured("ROLE_ADMIN")
-	@PreAuthorize("hasAuthority('DELETE_AUTHORITY')")
+//	@PreAuthorize("hasAuthority('DELETE_AUTHORITY')")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or #id == principal.userId")
 	@DeleteMapping(path = "/{id}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
 	public OperationStatusModel deleteUser(@PathVariable String id) {
 
