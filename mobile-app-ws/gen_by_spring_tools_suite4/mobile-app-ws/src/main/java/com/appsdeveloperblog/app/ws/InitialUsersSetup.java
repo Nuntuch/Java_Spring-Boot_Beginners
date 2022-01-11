@@ -30,6 +30,10 @@ public class InitialUsersSetup {
 	public void onApplicationEvent(ApplicationReadyEvent event) {
 		System.out.println("From Application ready event...");
 		
+		AuthorityEntity readAuthority = createAuthority("READ_AUTHORITY");
+		AuthorityEntity writeAuthority = createAuthority("WRITE_AUTHORITY");
+		AuthorityEntity deleteAuthority = createAuthority("DELETE_AUTHORITY");
+		
 		
     }
 	
