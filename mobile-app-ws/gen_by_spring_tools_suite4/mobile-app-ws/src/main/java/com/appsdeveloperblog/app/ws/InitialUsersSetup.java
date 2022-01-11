@@ -21,12 +21,24 @@ import com.appsdeveloperblog.app.ws.shared.Utils;
 
 @Component
 public class InitialUsersSetup {
-
+	
 	@Autowired
 	AuthorityRepository authorityRepository;
 	
+	@Autowired
+	RoleRepository roleRepository;
 	
+	@Autowired 
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@Autowired
+	Utils utils;
+	
+	@Autowired
+	UserRepository userRepository;
+
 	@EventListener
+	@Transactional
 	public void onApplicationEvent(ApplicationReadyEvent event) {
 		System.out.println("From Application ready event...");
 		
@@ -34,10 +46,12 @@ public class InitialUsersSetup {
 		AuthorityEntity writeAuthority = createAuthority("WRITE_AUTHORITY");
 		AuthorityEntity deleteAuthority = createAuthority("DELETE_AUTHORITY");
 		
-		
-    }
+		createRole("ROLE_USER", Arrays.asList(readAuthority,writeAuthority));
+		createRole("ROLE_ADMIN", Arrays.asList(readAuthority,writeAuthority,deleteAuthority));
+			
+	}
 	
-	
+	@Transactional
     private AuthorityEntity createAuthority(String name) {
 
         AuthorityEntity authority = authorityRepository.findByName(name);
@@ -48,5 +62,17 @@ public class InitialUsersSetup {
         return authority;
     }
 	
+	@Transactional
+    private RoleEntity createRole(
+            String name, Collection<AuthorityEntity> authorities) {
+
+        RoleEntity role = roleRepository.findByName(name);
+        if (role == null) {
+            role = new RoleEntity(name);
+            role.setAuthorities(authorities);
+            roleRepository.save(role);
+        }
+        return role;
+    }
 	
 }
