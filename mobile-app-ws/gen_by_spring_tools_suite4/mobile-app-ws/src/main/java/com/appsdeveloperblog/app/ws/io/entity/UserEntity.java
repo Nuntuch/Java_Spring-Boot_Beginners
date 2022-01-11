@@ -16,62 +16,53 @@ import javax.persistence.Table;
 
 import org.apache.log4j.Logger;
 
-
 import java.util.Collection;
 
 import javax.persistence.JoinColumn;
 
-
 //@Entity(name= "users")
 
 @Entity
-@Table(name="users")
-public class UserEntity implements Serializable{
+@Table(name = "users")
+public class UserEntity implements Serializable {
 
 	final static Logger logger = Logger.getLogger(UserEntity.class);
 
-	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5313493413859894403L;
-	
+
 	@Id
 	@GeneratedValue
 	private long id;
 
 	@Column(nullable = false)
 	private String userId;
-	
-	@Column(nullable = false , length = 50)
+
+	@Column(nullable = false, length = 50)
 	private String firstName;
-	
-	@Column(nullable = false , length = 50)
+
+	@Column(nullable = false, length = 50)
 	private String lastName;
 
-	@Column(nullable = false , length = 120, unique = true)
+	@Column(nullable = false, length = 120)
 	private String email;
 
-//	@Column(nullable = false)
-//	private String password;
-	
+	@Column(nullable = false)
 	private String encryptedPassword;
-	
+
 	private String emailVerificationToken;
-	
-	@Column(nullable = false)	
+
+	@Column(nullable = false)
 	private Boolean emailVerificationStatus = false;
-	
+
 	@OneToMany(mappedBy = "userDetails", cascade = CascadeType.ALL)
 	private List<AddressEntity> addresses;
-	
 
-	@ManyToMany(cascade= { CascadeType.PERSIST }, fetch = FetchType.EAGER )
-	@JoinTable(name="users_roles", 
-			joinColumns=@JoinColumn(name="users_id",referencedColumnName="id"), 
-			inverseJoinColumns=@JoinColumn(name="roles_id",referencedColumnName="id"))
+	@ManyToMany(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER)
+	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "users_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
 	private Collection<RoleEntity> roles;
-	
 
 	public long getId() {
 		return id;
@@ -113,14 +104,6 @@ public class UserEntity implements Serializable{
 		this.email = email;
 	}
 
-//	public String getPassword() {
-//		return password;
-//	}
-//
-//	public void setPassword(String password) {
-//		this.password = password;
-//	}
-
 	public String getEncryptedPassword() {
 		return encryptedPassword;
 	}
@@ -145,14 +128,6 @@ public class UserEntity implements Serializable{
 		this.emailVerificationStatus = emailVerificationStatus;
 	}
 
-//	public List<AddressEntity> getAddress() {
-//	return addresses;
-//}
-//
-//public void setAddress(List<AddressEntity> address) {
-//	this.addresses = address;
-//}
-	
 	public List<AddressEntity> getAddresses() {
 		return addresses;
 	}
@@ -160,12 +135,13 @@ public class UserEntity implements Serializable{
 	public void setAddresses(List<AddressEntity> addresses) {
 		this.addresses = addresses;
 	}
-	
-	
-//	void test() {
-//		
-//	}
 
-	
-	
+	public Collection<RoleEntity> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Collection<RoleEntity> roles) {
+		this.roles = roles;
+	}
+
 }
