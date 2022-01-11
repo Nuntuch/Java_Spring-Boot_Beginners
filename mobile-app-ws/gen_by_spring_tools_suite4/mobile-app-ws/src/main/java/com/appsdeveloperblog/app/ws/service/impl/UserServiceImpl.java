@@ -23,6 +23,7 @@ import com.appsdeveloperblog.app.ws.exceptions.UserServiceException;
 import com.appsdeveloperblog.app.ws.io.entity.UserEntity;
 import com.appsdeveloperblog.app.ws.io.entity.PasswordResetTokenEntity;
 import com.appsdeveloperblog.app.ws.io.repositories.UserRepository;
+import com.appsdeveloperblog.app.ws.security.UserPrincipal;
 import com.appsdeveloperblog.app.ws.io.repositories.PasswordResetTokenRepository;
 import com.appsdeveloperblog.app.ws.service.EmailService;
 import com.appsdeveloperblog.app.ws.service.SubscriptionService;
@@ -163,11 +164,12 @@ final static Logger logger = Logger.getLogger(UserServiceImpl.class);
 		
 		if(userEntity == null ) throw new UsernameNotFoundException(email);
 		
+		return new UserPrincipal(userEntity);
 		
-		return new User(userEntity.getEmail(), userEntity.getEncryptedPassword(), 
-				userEntity.getEmailVerificationStatus(),
-				true, true,
-				true, new ArrayList<>());
+//		return new User(userEntity.getEmail(), userEntity.getEncryptedPassword(), 
+//				userEntity.getEmailVerificationStatus(),
+//				true, true,
+//				true, new ArrayList<>());
 		
 //		return new User(userEntity.getEmail(),userEntity.getEncryptedPassword(),new ArrayList<>());
 	}
