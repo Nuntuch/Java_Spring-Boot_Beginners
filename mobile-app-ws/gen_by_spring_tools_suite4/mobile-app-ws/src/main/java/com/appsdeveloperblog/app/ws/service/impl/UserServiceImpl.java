@@ -1,6 +1,8 @@
 package com.appsdeveloperblog.app.ws.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,9 +24,11 @@ import org.springframework.stereotype.Service;
 import com.appsdeveloperblog.app.ws.exceptions.UserServiceException;
 import com.appsdeveloperblog.app.ws.io.entity.UserEntity;
 import com.appsdeveloperblog.app.ws.io.entity.PasswordResetTokenEntity;
+import com.appsdeveloperblog.app.ws.io.entity.RoleEntity;
 import com.appsdeveloperblog.app.ws.io.repositories.UserRepository;
 import com.appsdeveloperblog.app.ws.security.UserPrincipal;
 import com.appsdeveloperblog.app.ws.io.repositories.PasswordResetTokenRepository;
+import com.appsdeveloperblog.app.ws.io.repositories.RoleRepository;
 import com.appsdeveloperblog.app.ws.service.EmailService;
 import com.appsdeveloperblog.app.ws.service.SubscriptionService;
 import com.appsdeveloperblog.app.ws.service.UserService;
@@ -56,6 +60,8 @@ final static Logger logger = Logger.getLogger(UserServiceImpl.class);
 	@Autowired 
 	PasswordResetTokenRepository passwordResetTokenRepository;
 	
+	@Autowired
+	RoleRepository roleRepository;
 	
 	private EmailService emailService;
 	
@@ -103,6 +109,18 @@ final static Logger logger = Logger.getLogger(UserServiceImpl.class);
 		userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		userEntity.setEmailVerificationToken(utils.generateEmailVerificationToken(publicUserId));
 		userEntity.setEmailVerificationStatus(false);
+		
+		// Set roles 
+		Collection<RoleEntity> roleEntities = new HashSet<>();
+		for(String role: user.getRoles()) {
+			RoleEntity roleEntity = roleRepository.findByName(role);
+			if(roleEntity !=null) {
+				roleEntities.add(roleEntity);
+			}
+		}
+		
+		userEntity.setRoles(roleEntities);
+	
 		
 		logger.trace("dev_status : "+dev_status);
 		

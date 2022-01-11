@@ -3,7 +3,6 @@ package com.appsdeveloperblog.app.ws;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -17,27 +16,24 @@ import com.appsdeveloperblog.app.ws.io.entity.UserEntity;
 import com.appsdeveloperblog.app.ws.io.repositories.AuthorityRepository;
 import com.appsdeveloperblog.app.ws.io.repositories.RoleRepository;
 import com.appsdeveloperblog.app.ws.io.repositories.UserRepository;
-import com.appsdeveloperblog.app.ws.security.WebSecurity;
-//import com.appsdeveloperblog.app.ws.shared.Roles;
+import com.appsdeveloperblog.app.ws.shared.Roles;
 import com.appsdeveloperblog.app.ws.shared.Utils;
 
 @Component
 public class InitialUsersSetup {
-
-	final static Logger logger = Logger.getLogger(WebSecurity.class);
 	
 	@Autowired
 	AuthorityRepository authorityRepository;
-
+	
 	@Autowired
 	RoleRepository roleRepository;
-
-	@Autowired
+	
+	@Autowired 
 	BCryptPasswordEncoder bCryptPasswordEncoder;
-
+	
 	@Autowired
 	Utils utils;
-
+	
 	@Autowired
 	UserRepository userRepository;
 
@@ -45,17 +41,16 @@ public class InitialUsersSetup {
 	@Transactional
 	public void onApplicationEvent(ApplicationReadyEvent event) {
 		System.out.println("From Application ready event...");
-
+		
 		AuthorityEntity readAuthority = createAuthority("READ_AUTHORITY");
 		AuthorityEntity writeAuthority = createAuthority("WRITE_AUTHORITY");
 		AuthorityEntity deleteAuthority = createAuthority("DELETE_AUTHORITY");
-
-		RoleEntity roleUser = createRole("ROLE_USER", Arrays.asList(readAuthority, writeAuthority));
-		RoleEntity roleAdmin = createRole("ROLE_ADMIN", Arrays.asList(readAuthority, writeAuthority, deleteAuthority));
-
-		if (roleAdmin == null)
-			return;
-
+		
+		createRole(Roles.ROLE_USER.name(), Arrays.asList(readAuthority,writeAuthority));
+		RoleEntity roleAdmin = createRole(Roles.ROLE_ADMIN.name(), Arrays.asList(readAuthority,writeAuthority, deleteAuthority));
+		
+		if(roleAdmin == null) return;
+		
 		UserEntity adminUser = new UserEntity();
 		adminUser.setFirstName("Sergey");
 		adminUser.setLastName("Kargopolov");
@@ -64,32 +59,35 @@ public class InitialUsersSetup {
 		adminUser.setUserId(utils.generateUserId(30));
 		adminUser.setEncryptedPassword(bCryptPasswordEncoder.encode("12345678"));
 		adminUser.setRoles(Arrays.asList(roleAdmin));
-
-		userRepository.save(adminUser);
-		logger.debug("adminUser created on DB");
-	}
-
-	@Transactional
-	private AuthorityEntity createAuthority(String name) {
-
-		AuthorityEntity authority = authorityRepository.findByName(name);
-		if (authority == null) {
-			authority = new AuthorityEntity(name);
-			authorityRepository.save(authority);
+		
+		UserEntity storedUserDetails = userRepository.findByEmail("admin@test.com");
+		if (storedUserDetails == null) {
+		   userRepository.save(adminUser);
 		}
-		return authority;
 	}
-
+	
 	@Transactional
-	private RoleEntity createRole(String name, Collection<AuthorityEntity> authorities) {
+    private AuthorityEntity createAuthority(String name) {
 
-		RoleEntity role = roleRepository.findByName(name);
-		if (role == null) {
-			role = new RoleEntity(name);
-			role.setAuthorities(authorities);
-			roleRepository.save(role);
-		}
-		return role;
-	}
+        AuthorityEntity authority = authorityRepository.findByName(name);
+        if (authority == null) {
+            authority = new AuthorityEntity(name);
+            authorityRepository.save(authority);
+        }
+        return authority;
+    }
+	
+	@Transactional
+    private RoleEntity createRole(
+            String name, Collection<AuthorityEntity> authorities) {
 
+        RoleEntity role = roleRepository.findByName(name);
+        if (role == null) {
+            role = new RoleEntity(name);
+            role.setAuthorities(authorities);
+            roleRepository.save(role);
+        }
+        return role;
+    }
+	
 }

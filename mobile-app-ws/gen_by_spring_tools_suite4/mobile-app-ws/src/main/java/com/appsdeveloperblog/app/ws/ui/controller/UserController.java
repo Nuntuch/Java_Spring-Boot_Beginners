@@ -2,6 +2,7 @@ package com.appsdeveloperblog.app.ws.ui.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -33,6 +34,7 @@ import com.appsdeveloperblog.app.ws.exceptions.UserServiceException;
 import com.appsdeveloperblog.app.ws.service.AddressService;
 import com.appsdeveloperblog.app.ws.service.SubscriptionService;
 import com.appsdeveloperblog.app.ws.service.UserService;
+import com.appsdeveloperblog.app.ws.shared.Roles;
 import com.appsdeveloperblog.app.ws.shared.dto.AddressDTO;
 import com.appsdeveloperblog.app.ws.shared.dto.UserDto;
 import com.appsdeveloperblog.app.ws.ui.model.request.PasswordResetModel;
@@ -101,7 +103,9 @@ public class UserController {
 
 		ModelMapper modelMapper = new ModelMapper();
 		UserDto userDto = modelMapper.map(userDetails, UserDto.class);
+		userDto.setRoles(new HashSet<>(Arrays.asList(Roles.ROLE_USER.name())));
 
+		
 		UserDto createdUser = userService.createUser(userDto);
 //		BeanUtils.copyProperties(createdUser, returnValue);
 		returnValue = modelMapper.map(createdUser, UserRest.class);

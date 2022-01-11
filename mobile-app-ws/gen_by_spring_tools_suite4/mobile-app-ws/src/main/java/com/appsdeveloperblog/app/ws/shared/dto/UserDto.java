@@ -3,6 +3,8 @@ package com.appsdeveloperblog.app.ws.shared.dto;
 import java.io.Serializable;
 import java.util.List;
 import org.apache.log4j.Logger;
+import java.util.Collection;
+
 
 public class UserDto implements Serializable{
 
@@ -15,16 +17,17 @@ public class UserDto implements Serializable{
 	private static final long serialVersionUID = 4462208319000844792L;
 	
 	private long id;
-	private String userId;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String password;
-	private String encryptedPassword;
-	private String emailVerificationToken;
-	private Boolean emailVerificationStatus = false;
-	private List<AddressDTO> addresses;
-	
+    private String userId;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private String encryptedPassword;
+    private String emailVerificationToken;
+    private Boolean emailVerificationStatus = false;
+    private List<AddressDTO> addresses;
+    private Collection<String> roles;
+    
 	public long getId() {
 		return id;
 	}
@@ -73,31 +76,26 @@ public class UserDto implements Serializable{
 	public void setEmailVerificationToken(String emailVerificationToken) {
 		this.emailVerificationToken = emailVerificationToken;
 	}
-	public boolean getEmailVerificationStatus() {
+	public Boolean getEmailVerificationStatus() {
 		return emailVerificationStatus;
 	}
 	public void setEmailVerificationStatus(Boolean emailVerificationStatus) {
 		this.emailVerificationStatus = emailVerificationStatus;
 	}
-//	public List<AddressDTO> getAddresses() {
-//		return addresses;
-//	}
-//	public void setAddresses(List<AddressDTO> addresses) {
-//		this.addresses = addresses;
-//	}
-//	
-//	
 	public List<AddressDTO> getAddresses() {
 		return addresses;
 	}
 	public void setAddresses(List<AddressDTO> addresses) {
 		this.addresses = addresses;
 	}
-
-	
-	
-
-	
-	
-	
+	public Collection<String> getRoles() {
+		return roles;
+	}
+	public void setRoles(Collection<String> roles) {
+		this.roles = roles;
+	}
+    
+    
+    
 }
+
