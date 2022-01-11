@@ -22,11 +22,27 @@ import com.appsdeveloperblog.app.ws.shared.Utils;
 @Component
 public class InitialUsersSetup {
 
+	@Autowired
+	AuthorityRepository authorityRepository;
+	
+	
 	@EventListener
 	public void onApplicationEvent(ApplicationReadyEvent event) {
 		System.out.println("From Application ready event...");
 		
 		
     }
+	
+	
+    private AuthorityEntity createAuthority(String name) {
+
+        AuthorityEntity authority = authorityRepository.findByName(name);
+        if (authority == null) {
+            authority = new AuthorityEntity(name);
+            authorityRepository.save(authority);
+        }
+        return authority;
+    }
+	
 	
 }
