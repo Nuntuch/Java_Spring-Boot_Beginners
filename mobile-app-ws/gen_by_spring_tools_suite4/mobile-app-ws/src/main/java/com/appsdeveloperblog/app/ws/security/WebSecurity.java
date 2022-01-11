@@ -14,6 +14,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.appsdeveloperblog.app.ws.io.entity.UserEntity;
 import com.appsdeveloperblog.app.ws.io.repositories.UserRepository;
 import com.appsdeveloperblog.app.ws.service.UserService;
 
@@ -43,6 +44,15 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
+		try {
+
+			logger.debug("test use userRepository : " + userRepository.findByEmail("admin@test.com").getEmail());
+			
+
+		}catch (Exception e) {
+			logger.error(e);
+		}
+		
 		
 		http.cors().and().csrf().disable().authorizeRequests()
 		.antMatchers(HttpMethod.POST,SecurityConstants.SIGN_UP_URL)

@@ -3,6 +3,7 @@ package com.appsdeveloperblog.app.ws;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -16,12 +17,15 @@ import com.appsdeveloperblog.app.ws.io.entity.UserEntity;
 import com.appsdeveloperblog.app.ws.io.repositories.AuthorityRepository;
 import com.appsdeveloperblog.app.ws.io.repositories.RoleRepository;
 import com.appsdeveloperblog.app.ws.io.repositories.UserRepository;
+import com.appsdeveloperblog.app.ws.security.WebSecurity;
 //import com.appsdeveloperblog.app.ws.shared.Roles;
 import com.appsdeveloperblog.app.ws.shared.Utils;
 
 @Component
 public class InitialUsersSetup {
 
+	final static Logger logger = Logger.getLogger(WebSecurity.class);
+	
 	@Autowired
 	AuthorityRepository authorityRepository;
 
@@ -62,6 +66,7 @@ public class InitialUsersSetup {
 		adminUser.setRoles(Arrays.asList(roleAdmin));
 
 		userRepository.save(adminUser);
+		logger.debug("adminUser created on DB");
 	}
 
 	@Transactional
