@@ -14,6 +14,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
+import com.appsdeveloperblog.app.ws.io.entity.UserEntity;
+import com.appsdeveloperblog.app.ws.io.repositories.UserRepository;
+
 import io.jsonwebtoken.Jwts;
 import org.apache.log4j.Logger;
 //import java.io.IOException;
@@ -30,11 +33,14 @@ import org.apache.log4j.Logger;
 //import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 public class AuthorizationFilter extends BasicAuthenticationFilter {
-
+	
 	final static Logger logger = Logger.getLogger(AuthorizationFilter.class);
 
-	public AuthorizationFilter(AuthenticationManager authManager) {
+	private final UserRepository userRepository;
+	 
+	public AuthorizationFilter(AuthenticationManager authManager,UserRepository userRepository) {
 		super(authManager);
+		this.userRepository = userRepository;
 	
 	}
 
@@ -74,6 +80,10 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 					.getSubject();
 			
 			if(user != null) {
+				
+				UserEntity userEntity = userRepository.findByEmail(user);
+				UserPrincipal userPrincipal = new UserPrincipal(userEntity);
+				
 				return new UsernamePasswordAuthenticationToken(user,null,new ArrayList<>());	
 			}
 			
