@@ -94,6 +94,22 @@ public class InitialUsersSetup {
 					}
 				
 	
+				
+				UserEntity standartUser1 = new UserEntity();
+				standartUser1.setFirstName("Sergey");
+				standartUser1.setLastName("Kargopolov");
+				standartUser1.setEmail("standartuser2@test.com");
+				standartUser1.setEmailVerificationStatus(true);
+				standartUser1.setUserId(utils.generateUserId(30));
+				standartUser1.setEncryptedPassword(bCryptPasswordEncoder.encode("12345678"));
+				standartUser1.setRoles(Arrays.asList(roleStandartUser));
+				
+				
+				storedUserDetails = userRepository.findByEmail("standartuser2@test.com");
+				if (storedUserDetails == null) {
+				   userRepository.save(standartUser1);
+					}
+				
 				}
 				
 		}catch (Exception e) {
