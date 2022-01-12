@@ -11,10 +11,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.appsdeveloperblog.app.ws.security.AppProperties;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.sql.*;
 
 import org.apache.log4j.Logger;
 
+@Slf4j
 @SpringBootApplication
 public class MobileAppWsApplication extends SpringBootServletInitializer{
 
@@ -27,6 +30,8 @@ public class MobileAppWsApplication extends SpringBootServletInitializer{
 	
 	public static void main(String[] args) {	
 		
+		
+		log.debug("Lombok Log is workinggggggggggggggggggggggggggggggggggggggggg");
 		
 //		logger.trace("MobileAppWs Application Start...");
 //		logger.debug("MobileAppWs Application Start...");
