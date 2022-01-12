@@ -19,6 +19,10 @@ import com.appsdeveloperblog.app.ws.io.repositories.UserRepository;
 import com.appsdeveloperblog.app.ws.shared.Roles;
 import com.appsdeveloperblog.app.ws.shared.Utils;
 
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component
 public class InitialUsersSetup {
 	
@@ -64,6 +68,48 @@ public class InitialUsersSetup {
 		if (storedUserDetails == null) {
 		   userRepository.save(adminUser);
 		}
+		
+		
+		try{
+
+			RoleEntity roleStandartUser = roleRepository.findByName(Roles.ROLE_USER.name());
+			
+			if (roleStandartUser == null) {
+				log.error("Not found ROLE_USER on database");
+			}else {
+				
+				UserEntity standartUser = new UserEntity();
+				standartUser.setFirstName("Sergey");
+				standartUser.setLastName("Kargopolov");
+				standartUser.setEmail("standartuser@test.com");
+				standartUser.setEmailVerificationStatus(true);
+				standartUser.setUserId(utils.generateUserId(30));
+				standartUser.setEncryptedPassword(bCryptPasswordEncoder.encode("12345678"));
+				standartUser.setRoles(Arrays.asList(roleStandartUser));
+				
+				
+				storedUserDetails = userRepository.findByEmail("standartuser@test.com");
+				if (storedUserDetails == null) {
+				   userRepository.save(standartUser);
+					}
+				
+	
+				}
+				
+		}catch (Exception e) {
+			log.error(e.toString());
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 	
 	@Transactional
